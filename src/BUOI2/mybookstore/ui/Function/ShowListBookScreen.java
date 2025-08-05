@@ -1,16 +1,16 @@
 package BUOI2.mybookstore.ui.Function;
 
-import BUOI2.mybookstore.Account.AdminAccount;
+import BUOI2.mybookstore.Account.MyAccount;
 
 import java.util.Scanner;
-import static BUOI2.mybookstore.ui.menu.isShowingFunction;
+import static BUOI2.mybookstore.ui.constants.isShowingFunction;
 
 public class ShowListBookScreen {
     public static void displayListBookMenu() {
-        if (AdminAccount.myAccount.getListBooks().isEmpty()) {
+        if (MyAccount.myAccount.getListBooks().isEmpty()) {
             System.out.println("Không có sách trong danh sách !");
         } else {
-            AdminAccount.myAccount.printAllBooks(AdminAccount.myAccount.getListBooks());
+            MyAccount.myAccount.printAllBooks(MyAccount.myAccount.getListBooks());
         }
         if (isShowingFunction) System.out.println("Nhấn 0 để quay lại.");
         while (isShowingFunction) {

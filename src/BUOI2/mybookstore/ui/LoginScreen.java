@@ -1,9 +1,9 @@
 package BUOI2.mybookstore.ui;
 
 import java.util.Scanner;
-import BUOI2.mybookstore.managers.AuthManager;
-import static BUOI2.mybookstore.ui.menu.authManager;
-import static BUOI2.mybookstore.ui.menu.isLoggedIn;
+
+import static BUOI2.mybookstore.ui.constants.authManager;
+import static BUOI2.mybookstore.ui.constants.isLoggedIn;
 
 public class LoginScreen {
     public static void displayLoginMenu() {
@@ -47,7 +47,7 @@ public class LoginScreen {
             System.out.println("Bạn đã đăng nhập với tư cách là khách.");
         }
         else if (choice == 0) {
-            menu.running = false;
+            constants.running = false;
             System.out.println("Hẹn gặp lại quý khách !");
         }
     }

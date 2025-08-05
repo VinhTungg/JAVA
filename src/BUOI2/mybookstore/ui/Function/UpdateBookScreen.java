@@ -1,8 +1,8 @@
 package BUOI2.mybookstore.ui.Function;
 
-import BUOI2.mybookstore.Account.AdminAccount;
+import BUOI2.mybookstore.Account.MyAccount;
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.ui.menu;
+import BUOI2.mybookstore.ui.constants;
 
 import java.util.Scanner;
 
@@ -17,14 +17,14 @@ public class UpdateBookScreen {
             System.out.print("Vui lòng nhập một số hợp lệ: ");
             sc.next();
         }
-        menu.idBook = sc.nextInt();
-        while (menu.idBook < 1 || menu.idBook > AdminAccount.myAccount.getListBooks().size()) {
-            if (menu.idBook == 0) { return; }
+        constants.idBook = sc.nextInt();
+        while (constants.idBook < 1 || constants.idBook > MyAccount.myAccount.getListBooks().size()) {
+            if (constants.idBook == 0) { return; }
             System.out.print("Không tìm thấy sách để cập nhật, vui lòng nhập lại: ");
-            menu.idBook = sc.nextInt();
+            constants.idBook = sc.nextInt();
         }
         sc.nextLine();
-        Book bookToUpdate = AdminAccount.myAccount.getListBooks().get(menu.idBook - 1);
+        Book bookToUpdate = MyAccount.myAccount.getListBooks().get(constants.idBook - 1);
         System.out.print("Nhập tên sách: ");
         String newTitle = sc.nextLine();
         if (newTitle.isEmpty()) { newTitle = bookToUpdate.getTitle(); }
@@ -37,7 +37,7 @@ public class UpdateBookScreen {
         System.out.print("Nhập ngày xuất bản: ");
         String newPublishDate = sc.nextLine();
         if (newPublishDate.isEmpty()) { newPublishDate = bookToUpdate.getPublishDate(); }
-        AdminAccount.myAccount.updateBook(bookToUpdate, newTitle, newAuthor, newGenre, newPublishDate);
+        MyAccount.myAccount.updateBook(bookToUpdate, newTitle, newAuthor, newGenre, newPublishDate);
         System.out.println("Cập nhật sách thành công !");
         System.out.println();
     }

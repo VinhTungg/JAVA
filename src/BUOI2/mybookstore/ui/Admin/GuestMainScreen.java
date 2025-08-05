@@ -2,7 +2,7 @@ package BUOI2.mybookstore.ui.Admin;
 
 import BUOI2.mybookstore.ui.Function.SearchBookScreen;
 import BUOI2.mybookstore.ui.Function.ShowListBookScreen;
-import BUOI2.mybookstore.ui.menu;
+import BUOI2.mybookstore.ui.constants;
 
 import java.util.Scanner;
 
@@ -19,15 +19,15 @@ public class GuestMainScreen {
         int choice = sc.nextInt();
         switch (choice) {
             case 0:
-                menu.isLoggedIn = false;
-                menu.authManager.Logout();
+                constants.isLoggedIn = false;
+                constants.authManager.Logout();
                 break;
             case 1:
-                menu.isShowingFunction = true;
+                constants.isShowingFunction = true;
                 SearchBookScreen.displayResults();
                 break;
             case 2:
-                menu.isShowingFunction = true;
+                constants.isShowingFunction = true;
                 ShowListBookScreen.displayListBookMenu();
                 break;
         }

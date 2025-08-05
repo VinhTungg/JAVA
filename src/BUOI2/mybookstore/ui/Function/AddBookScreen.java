@@ -1,7 +1,7 @@
 package BUOI2.mybookstore.ui.Function;
 
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.Account.AdminAccount;
+import BUOI2.mybookstore.Account.MyAccount;
 import java.util.Scanner;
 
 public class AddBookScreen {
@@ -28,8 +28,8 @@ public class AddBookScreen {
             genre = sc.nextLine().trim();
             System.out.print("Nhập ngày xuất bản: ");
             publishDate = sc.nextLine().trim();
-            Book book = new Book(AdminAccount.myAccount.getListBooks().size() + 1, title, author, genre, publishDate);
-            AdminAccount.myAccount.addBook(book);
+            Book book = new Book(MyAccount.myAccount.getListBooks().size() + 1, title, author, genre, publishDate);
+            MyAccount.myAccount.addBook(book);
             System.out.println("Thêm sách thành công !");
             System.out.println();
         }

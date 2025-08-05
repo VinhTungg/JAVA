@@ -1,6 +1,6 @@
 package BUOI2.mybookstore.models;
 
-import BUOI2.mybookstore.ui.menu;
+import BUOI2.mybookstore.ui.constants;
 
 public class Book {
     private String title, author, genre, publishDate;
@@ -27,6 +27,6 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format(menu.tableFormat, id, title, author, genre, publishDate);
+        return String.format(constants.tableFormat, id, title, author, genre, publishDate);
     }
 }

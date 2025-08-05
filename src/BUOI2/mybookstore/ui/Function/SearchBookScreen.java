@@ -1,20 +1,20 @@
 package BUOI2.mybookstore.ui.Function;
 
-import BUOI2.mybookstore.Account.AdminAccount;
-import BUOI2.mybookstore.managers.LibraryManager;
+import BUOI2.mybookstore.Account.MyAccount;
+import BUOI2.mybookstore.managers.BookStoreManager;
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.ui.menu;
+import BUOI2.mybookstore.ui.constants;
 
 import java.util.Scanner;
 
 public class SearchBookScreen {
-    public static LibraryManager searchBook() {
+    public static BookStoreManager searchBook() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập từ khóa bạn muốn tìm kiếm: ");
         String keyword = sc.nextLine().toLowerCase();
-        LibraryManager foundBooks = new LibraryManager();
+        BookStoreManager foundBooks = new BookStoreManager();
 
-        for (Book book : AdminAccount.myAccount.getListBooks()) {
+        for (Book book : MyAccount.myAccount.getListBooks()) {
             if (book.getTitle().toLowerCase().contains(keyword) ||
                     book.getAuthor().toLowerCase().contains(keyword) ||
                     book.getGenre().toLowerCase().contains(keyword) ||
@@ -27,8 +27,8 @@ public class SearchBookScreen {
     }
     public static void displayResults() {
         Scanner sc = new Scanner(System.in);
-        while (menu.isShowingFunction) {
-            LibraryManager foundBooks = searchBook();
+        while (constants.isShowingFunction) {
+            BookStoreManager foundBooks = searchBook();
             if (foundBooks.getListBooks().isEmpty()) {
                 System.out.println("Không tìm thấy sách !");
             } else {
@@ -47,7 +47,8 @@ public class SearchBookScreen {
                 choice = sc.nextInt();
             }
             if (choice == 1) continue;
-            else if (choice == 0) {menu.isShowingFunction = false; break;}
+            else if (choice == 0) {
+                constants.isShowingFunction = false; break;}
         }
     }
 }

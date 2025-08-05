@@ -2,7 +2,7 @@ package BUOI2.mybookstore.ui;
 
 import BUOI2.mybookstore.managers.AuthManager;
 
-public class menu {
+public class constants {
     public static boolean running = true;
     public static boolean isLoggedIn = false;
     public static AuthManager authManager = new AuthManager();

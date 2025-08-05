@@ -1,7 +1,7 @@
 package BUOI2.mybookstore.ui.Admin;
 
 import BUOI2.mybookstore.ui.Function.*;
-import BUOI2.mybookstore.ui.menu;
+import BUOI2.mybookstore.ui.constants;
 
 import java.util.Scanner;
 
@@ -21,8 +21,8 @@ public class AdminMainScreen {
         int choice = sc.nextInt();
         switch (choice) {
             case 0:
-                menu.isLoggedIn = false;
-                menu.authManager.Logout();
+                constants.isLoggedIn = false;
+                constants.authManager.Logout();
                 break;
             case 1:
                 AddBookScreen.displayAddBookMenu();
@@ -34,11 +34,11 @@ public class AdminMainScreen {
                 UpdateBookScreen.updateBook();
                 break;
             case 4:
-                menu.isShowingFunction = true;
+                constants.isShowingFunction = true;
                 SearchBookScreen.displayResults();
                 break;
             case 5:
-                menu.isShowingFunction = true;
+                constants.isShowingFunction = true;
                 ShowListBookScreen.displayListBookMenu();
                 break;
         }
