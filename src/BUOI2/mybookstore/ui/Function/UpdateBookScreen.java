@@ -1,30 +1,27 @@
 package BUOI2.mybookstore.ui.Function;
 
-import BUOI2.mybookstore.Account.MyAccount;
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.ui.constants;
 
-import java.util.Scanner;
+import static BUOI2.mybookstore.ui.Function.ShowListBookScreen.displayListBookMenu;
+import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
+import static BUOI2.mybookstore.ui.constants.*;
 
 public class UpdateBookScreen {
     public static void updateBook() {
-        Scanner sc = new Scanner(System.in);
-        ShowListBookScreen.displayListBookMenu();
+        displayListBookMenu();
+        if (myAccountListBooks.isEmpty()) return;
         System.out.println("Nhấn 0 để quay lại.");
         System.out.print("Nhập id sách muốn cập nhật: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Lỗi dữ liệu !");
-            System.out.print("Vui lòng nhập một số hợp lệ: ");
-            sc.next();
-        }
-        constants.idBook = sc.nextInt();
-        while (constants.idBook < 1 || constants.idBook > MyAccount.myAccount.getListBooks().size()) {
-            if (constants.idBook == 0) { return; }
+        isValid();
+        idBook = sc.nextInt();
+        while (idBook < 1 || idBook > myAccountListBooks.size()) {
+            if (idBook == 0) return;
             System.out.print("Không tìm thấy sách để cập nhật, vui lòng nhập lại: ");
-            constants.idBook = sc.nextInt();
+            isValid();
+            idBook = sc.nextInt();
         }
         sc.nextLine();
-        Book bookToUpdate = MyAccount.myAccount.getListBooks().get(constants.idBook - 1);
+        Book bookToUpdate = myAccountListBooks.get(idBook - 1);
         System.out.print("Nhập tên sách: ");
         String newTitle = sc.nextLine();
         if (newTitle.isEmpty()) { newTitle = bookToUpdate.getTitle(); }
@@ -37,7 +34,7 @@ public class UpdateBookScreen {
         System.out.print("Nhập ngày xuất bản: ");
         String newPublishDate = sc.nextLine();
         if (newPublishDate.isEmpty()) { newPublishDate = bookToUpdate.getPublishDate(); }
-        MyAccount.myAccount.updateBook(bookToUpdate, newTitle, newAuthor, newGenre, newPublishDate);
+        myAccount.updateBook(bookToUpdate, newTitle, newAuthor, newGenre, newPublishDate);
         System.out.println("Cập nhật sách thành công !");
         System.out.println();
     }

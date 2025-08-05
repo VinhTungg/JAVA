@@ -21,7 +21,7 @@ public class BookStoreManager {
         bookToUpdate.setPublishDate(newPublishDate);
     }
     public void printAllBooks(List<Book> books) {
-        System.out.println(String.format(constants.tableFormat, "STT", "TÁC GIẢ", "TIÊU ĐỀ", "THỂ LOẠI", "NGÀY XUẤT BẢN"));
+        System.out.println(String.format(constants.tableFormat, "Số thứ tự", "Tiêu đề", "Tác giả", "Thể loại", "Ngày xuất bản"));
         for (Book book : books) {
             System.out.println(book.toString());
         }

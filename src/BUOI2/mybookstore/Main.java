@@ -1,23 +1,24 @@
 package BUOI2.mybookstore;
 
 import BUOI2.mybookstore.managers.AuthManager;
-import BUOI2.mybookstore.ui.Admin.AdminMainScreen;
-import BUOI2.mybookstore.ui.Admin.GuestMainScreen;
-import BUOI2.mybookstore.ui.LoginScreen;
-import BUOI2.mybookstore.ui.constants;
+
+import static BUOI2.mybookstore.ui.LoginScreen.displayLoginMenu;
+import static BUOI2.mybookstore.ui.Role.AdminScreen.displayAdminMainMenu;
+import static BUOI2.mybookstore.ui.Role.GuestScreen.displayGuestMainMenu;
+import static BUOI2.mybookstore.ui.constants.*;
 
 public class Main {
     public static void main(String[] args) {
-        while (constants.running == true) {
-            if (!constants.isLoggedIn) {
-                LoginScreen.displayLoginMenu();
+        while (running == true) {
+            if (!isLoggedIn) {
+                displayLoginMenu();
             }
             else {
-                if (constants.authManager.getCurrentUserRole() == AuthManager.UserRole.ADMIN) {
-                    AdminMainScreen.displayAdminMainMenu();
+                if (authManager.getCurrentUserRole() == AuthManager.UserRole.ADMIN) {
+                    displayAdminMainMenu();
                 }
-                else if (constants.authManager.getCurrentUserRole() == AuthManager.UserRole.GUEST) {
-                    GuestMainScreen.displayGuestMainMenu();
+                else if (authManager.getCurrentUserRole() == AuthManager.UserRole.GUEST) {
+                    displayGuestMainMenu();
                 }
             }
         }

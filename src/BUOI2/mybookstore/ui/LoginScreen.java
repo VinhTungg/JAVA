@@ -1,25 +1,23 @@
 package BUOI2.mybookstore.ui;
 
-import java.util.Scanner;
-
-import static BUOI2.mybookstore.ui.constants.authManager;
-import static BUOI2.mybookstore.ui.constants.isLoggedIn;
+import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
+import static BUOI2.mybookstore.ui.constants.*;
 
 public class LoginScreen {
     public static void displayLoginMenu() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=========== Chào mừng đến với hiệu sách Tùng đẹp trai ==========");
         System.out.println();
         System.out.println("1. Đăng nhập.");
         System.out.println("2. Tiếp tục như là khách.");
         System.out.println("0. Dừng chương trình.");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
+        isValid();
+        int choice = sc.nextInt();
+        sc.nextLine();
         String username = "";
         String password = "";
         while (choice == 1) {
             System.out.print("Nhập tên tài khoản: ");
-            username = scanner.nextLine();
+            username = sc.nextLine();
             if (username.isEmpty()) {
                 if (username.trim().isEmpty()) {
                     System.out.println("Tên tài khoản không được bỏ trống !");
@@ -27,7 +25,7 @@ public class LoginScreen {
                 }
             }
             System.out.print("Nhập mật khẩu: ");
-            password = scanner.nextLine();
+            password = sc.nextLine();
             if (password.trim().isEmpty()) {
                 if (username.isEmpty()) {
                     System.out.println("Mật khẩu không được để trống !");

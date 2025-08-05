@@ -1,12 +1,14 @@
-package BUOI2.mybookstore.ui.Admin;
+package BUOI2.mybookstore.ui.Role;
 
-import BUOI2.mybookstore.ui.Function.*;
-import BUOI2.mybookstore.ui.constants;
+import static BUOI2.mybookstore.ui.Function.AddBookScreen.displayAddBookMenu;
+import static BUOI2.mybookstore.ui.Function.EraseBookScreen.eraseBook;
+import static BUOI2.mybookstore.ui.Function.SearchBookScreen.displayResults;
+import static BUOI2.mybookstore.ui.Function.ShowListBookScreen.displayListBookMenu;
+import static BUOI2.mybookstore.ui.Function.UpdateBookScreen.updateBook;
+import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
+import static BUOI2.mybookstore.ui.constants.*;
 
-import java.util.Scanner;
-
-public class AdminMainScreen {
-    public static Scanner sc = new Scanner(System.in);
+public class AdminScreen {
     public static void displayAdminMainMenu() {
         System.out.println("========== Tiệm sách của Tùng ==========");
         System.out.println("========== Vai trò: ADMIN ==========");
@@ -18,28 +20,29 @@ public class AdminMainScreen {
         System.out.println("4. Tìm kiếm sách");
         System.out.println("5. Xem danh sách sách");
         System.out.println("0. Đăng xuất");
+        isValid();
         int choice = sc.nextInt();
         switch (choice) {
             case 0:
-                constants.isLoggedIn = false;
-                constants.authManager.Logout();
+                isLoggedIn = false;
+                authManager.Logout();
                 break;
             case 1:
-                AddBookScreen.displayAddBookMenu();
+                displayAddBookMenu();
                 break;
             case 2:
-                EraseBookScreen.eraseBook();
+                eraseBook();
                 break;
             case 3:
-                UpdateBookScreen.updateBook();
+                updateBook();
                 break;
             case 4:
-                constants.isShowingFunction = true;
-                SearchBookScreen.displayResults();
+                isShowingFunction = true;
+                displayResults();
                 break;
             case 5:
-                constants.isShowingFunction = true;
-                ShowListBookScreen.displayListBookMenu();
+                isShowingFunction = true;
+                displayListBookMenu();
                 break;
         }
     }

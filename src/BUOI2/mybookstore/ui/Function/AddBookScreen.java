@@ -1,22 +1,17 @@
 package BUOI2.mybookstore.ui.Function;
 
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.Account.MyAccount;
-import java.util.Scanner;
+import static BUOI2.mybookstore.ui.constants.*;
+import static BUOI2.mybookstore.ui.Function.isValidValue.*;
 
 public class AddBookScreen {
     public static void displayAddBookMenu() {
         String title, author, genre, publishDate;
-        Scanner sc = new Scanner(System.in);
         System.out.println("Nhấn 0 để quay lại.");
         System.out.print("Nhập số sách muốn thêm: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Lỗi dữ liệu !");
-            System.out.print("Vui lòng nhập lại số: ");
-            sc.next();
-        }
+        isValid();
         int num = sc.nextInt();
-        if (num == 0) { return; }
+        if (num == 0) return;
         sc.nextLine();
         for (int i = 0; i < num; ++i) {
             System.out.println("Sách thứ " + (i + 1) + ":");
@@ -28,8 +23,8 @@ public class AddBookScreen {
             genre = sc.nextLine().trim();
             System.out.print("Nhập ngày xuất bản: ");
             publishDate = sc.nextLine().trim();
-            Book book = new Book(MyAccount.myAccount.getListBooks().size() + 1, title, author, genre, publishDate);
-            MyAccount.myAccount.addBook(book);
+            Book book = new Book(myAccountListBooks.size() + 1, title, author, genre, publishDate);
+            myAccount.addBook(book);
             System.out.println("Thêm sách thành công !");
             System.out.println();
         }

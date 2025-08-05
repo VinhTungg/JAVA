@@ -1,30 +1,32 @@
 package BUOI2.mybookstore.ui.Function;
 
-import BUOI2.mybookstore.Account.MyAccount;
-import BUOI2.mybookstore.ui.constants;
-
-import java.util.Scanner;
+import static BUOI2.mybookstore.ui.constants.*;
+import static BUOI2.mybookstore.ui.Function.ShowListBookScreen.*;
+import static BUOI2.mybookstore.ui.Function.isValidValue.*;
 
 public class EraseBookScreen {
+    public static void updateIdBook() {
+        for (int i = 0; i < myAccountListBooks.size(); ++i) {
+            myAccountListBooks.get(i).setId(i + 1);
+        }
+    }
     public static void eraseBook() {
-        Scanner sc = new Scanner(System.in);
-        ShowListBookScreen.displayListBookMenu();
+        displayListBookMenu();
+        if (myAccountListBooks.isEmpty()) return;
         System.out.println("Nhấn 0 để quay lại.");
         System.out.print("Nhập id sách muốn xóa: ");
-        while (!sc.hasNextInt()) {
-            System.out.println("Lỗi dữ liệu !");
-            System.out.print("Vui lòng nhập một số hợp lệ: ");
-            sc.next();
-        }
-        constants.idBook = sc.nextInt();
-        while (constants.idBook < 1 || constants.idBook > MyAccount.myAccount.getListBooks().size()) {
-            if (constants.idBook == 0) {return;}
+        isValid();
+        idBook = sc.nextInt();
+        while (idBook < 1 || idBook > myAccountListBooks.size()) {
+            if (idBook == 0) return;
             System.out.print("Không tìm thấy sách để xóa, vui lòng nhập lại: ");
-            constants.idBook = sc.nextInt();
+            isValid();
+            idBook = sc.nextInt();
         }
-        MyAccount.myAccount.removeBook(MyAccount.myAccount.getListBooks().get(constants.idBook - 1));
+        myAccount.removeBook(myAccountListBooks.get(idBook - 1));
         System.out.println("Xóa sách thành công !");
         System.out.println();
-        constants.idBook = 0;
+        updateIdBook();
+        idBook = 0;
     }
 }
