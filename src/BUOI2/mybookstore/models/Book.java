@@ -18,7 +18,6 @@ public class Book {
     public String getAuthor() { return author; }
     public String getGenre() { return genre; }
     public String getPublishDate() { return publishDate; }
-    public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }
     public void setTitle(String title) { this.title = title; }

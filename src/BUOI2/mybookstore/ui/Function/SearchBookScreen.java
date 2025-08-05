@@ -2,7 +2,6 @@ package BUOI2.mybookstore.ui.Function;
 
 import BUOI2.mybookstore.managers.BookStoreManager;
 import BUOI2.mybookstore.models.Book;
-import BUOI2.mybookstore.ui.constants;
 
 import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
 import static BUOI2.mybookstore.ui.constants.*;
@@ -42,9 +41,8 @@ public class SearchBookScreen {
                 isValid();
                 choice = sc.nextInt();
             }
-            if (choice == 1) continue;
-            else if (choice == 0) {
-                constants.isShowingFunction = false; break;}
+            if (choice == 0)
+                isShowingFunction = false;
         }
     }
 }

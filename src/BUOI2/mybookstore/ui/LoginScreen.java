@@ -13,16 +13,13 @@ public class LoginScreen {
         isValid();
         int choice = sc.nextInt();
         sc.nextLine();
-        String username = "";
-        String password = "";
+        String username, password;
         while (choice == 1) {
             System.out.print("Nhập tên tài khoản: ");
             username = sc.nextLine();
-            if (username.isEmpty()) {
-                if (username.trim().isEmpty()) {
-                    System.out.println("Tên tài khoản không được bỏ trống !");
-                    continue;
-                }
+            if (username.trim().isEmpty()) {
+                System.out.println("Tên tài khoản không được bỏ trống !");
+                continue;
             }
             System.out.print("Nhập mật khẩu: ");
             password = sc.nextLine();

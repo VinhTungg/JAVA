@@ -8,8 +8,8 @@ import static BUOI2.mybookstore.ui.Role.GuestScreen.displayGuestMainMenu;
 import static BUOI2.mybookstore.ui.constants.*;
 
 public class Main {
-    public static void main(String[] args) {
-        while (running == true) {
+    public static void main() {
+        while (running) {
             if (!isLoggedIn) {
                 displayLoginMenu();
             }
