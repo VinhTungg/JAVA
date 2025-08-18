@@ -1,10 +1,12 @@
-package BUOI2.mybookstore.ui.Function;
+package BUOI2.mybookstore.view.FucntionView;
 
-import BUOI2.mybookstore.models.Book;
-import static BUOI2.mybookstore.ui.constants.*;
-import static BUOI2.mybookstore.ui.Function.isValidValue.*;
+import BUOI2.mybookstore.models.Product.Book;
+import BUOI2.mybookstore.service.ProductService.AddBook;
 
-public class AddBookScreen {
+import static BUOI2.mybookstore.common.constants.*;
+import static BUOI2.mybookstore.service.OtherService.isValidValue.*;
+
+public class AddBookView {
     public static void displayAddBookMenu() {
         String title, author, genre, publishDate;
         System.out.println("Nhấn 0 để quay lại.");
@@ -23,8 +25,8 @@ public class AddBookScreen {
             genre = sc.nextLine().trim();
             System.out.print("Nhập ngày xuất bản: ");
             publishDate = sc.nextLine().trim();
-            Book book = new Book(myAccountListBooks.size() + 1, title, author, genre, publishDate);
-            myAccount.addBook(book);
+            Book book = new Book(ListBooks.size() + 1, title, author, genre, publishDate);
+            AddBook.addBook(book);
             System.out.println("Thêm sách thành công !");
             System.out.println();
         }

@@ -1,9 +1,15 @@
-package BUOI2.mybookstore.ui;
+package BUOI2.mybookstore.view;
 
-import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
-import static BUOI2.mybookstore.ui.constants.*;
+import BUOI2.mybookstore.common.AppContext;
+import BUOI2.mybookstore.common.constants;
+import BUOI2.mybookstore.models.User.Role;
+import BUOI2.mybookstore.models.User.User;
+import BUOI2.mybookstore.service.UserService.Login;
 
-public class LoginScreen {
+import static BUOI2.mybookstore.service.OtherService.isValidValue.isValid;
+import static BUOI2.mybookstore.common.constants.*;
+
+public class LoginView {
     public static void displayLoginMenu() {
         System.out.println("=========== Chào mừng đến với hiệu sách Tùng đẹp trai ==========");
         System.out.println();
@@ -29,7 +35,9 @@ public class LoginScreen {
                     continue;
                 }
             }
-            if (authManager.Login(username, password)) {
+            AppContext.setUser(new User(username, password));
+            Login userService = new Login();
+            if (userService.checkLogin(AppContext.getUser())) {
                 isLoggedIn = true;
                 System.out.println("Chào mừng admin !");
                 break;
@@ -38,6 +46,9 @@ public class LoginScreen {
             }
         }
         if (choice == 2) {
+            User user = new User();
+            user.setRole(Role.GUEST);
+            AppContext.setUser(user);
             isLoggedIn = true;
             System.out.println("Bạn đã đăng nhập với tư cách là khách.");
         }

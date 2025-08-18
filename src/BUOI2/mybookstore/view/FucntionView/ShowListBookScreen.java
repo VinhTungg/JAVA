@@ -1,14 +1,16 @@
-package BUOI2.mybookstore.ui.Function;
+package BUOI2.mybookstore.view.FucntionView;
 
-import static BUOI2.mybookstore.ui.Function.isValidValue.isValid;
-import static BUOI2.mybookstore.ui.constants.*;
+import BUOI2.mybookstore.service.ProductService.ShowList;
+
+import static BUOI2.mybookstore.service.OtherService.isValidValue.isValid;
+import static BUOI2.mybookstore.common.constants.*;
 
 public class ShowListBookScreen {
     public static void displayListBookMenu() {
-        if (myAccountListBooks.isEmpty()) {
+        if (ListBooks.isEmpty()) {
             System.out.println("Không có sách trong danh sách !");
         } else {
-            myAccount.printAllBooks(myAccountListBooks);
+            ShowList.printAllBooks(ListBooks);
         }
         if (isShowingFunction) System.out.println("Nhấn 0 để quay lại.");
         while (isShowingFunction) {

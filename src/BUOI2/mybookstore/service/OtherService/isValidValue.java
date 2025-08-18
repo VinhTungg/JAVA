@@ -1,6 +1,6 @@
-package BUOI2.mybookstore.ui.Function;
+package BUOI2.mybookstore.service.OtherService;
 
-import static BUOI2.mybookstore.ui.constants.sc;
+import static BUOI2.mybookstore.common.constants.sc;
 
 public class isValidValue {
     public static void isValid() {
